@@ -16,8 +16,6 @@ spec:
         - name: sample-oke-bg-app
           # enter the path to your image, be sure to include the correct region prefix
           image: iad.ocir.io/intoraclerohit/mr-devops-oke-bg-sample:${BUILDRUN_HASH}
-          imagePullSecrets:
-            - name: ocirsecret
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -33,6 +31,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+      imagePullSecrets:
+        - name: ocirsecret
 
 ---
 apiVersion: v1
